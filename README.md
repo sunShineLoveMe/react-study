@@ -40,3 +40,17 @@
   * 导入useRef函数
   * 执行useRef函数并且传入null,返回值为一个对象，内部由一个current属性存放拿到的dom对象(组件实例)
   * 通过ref绑定要获取的元素或者组件实例
+
+## React 路由
+
+router应用也是单页面应用(SPA),因此也需要引入路由来控制不同组件来实现隐藏和展示从而实现不同页面的效果，保持UI和URL的同步
+
+#### 路由模式
+
+* history模式
+  * history模式对应引入BrowerRouter组件
+
+## React脚手架概念
+
+* React StrictMode严格模式
+  * 主要用来检查项目中潜在问题的工具，和fragment一样，它不会渲染任何可见的UI，为其后代元素触发额外的检查和警告。
