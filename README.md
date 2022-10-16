@@ -54,3 +54,19 @@ router应用也是单页面应用(SPA),因此也需要引入路由来控制不�
 
 * React StrictMode严格模式
   * 主要用来检查项目中潜在问题的工具，和fragment一样，它不会渲染任何可见的UI，为其后代元素触发额外的检查和警告。
+* React fragment 标签
+  * Fragment组件在不创建额外dom元素的情况下，让render()方法中返回多个元素，相当于空标签<>`</>`
+  * Fragment标签支持能接收键值和属性，可以遍历循环元素
+
+## React styled-components的使用
+
+ styled-components是第三方的库，是一种css的私有化方式，用来实现css in js的方式
+
+在多人协作的方式下，css的命名方式可能会发生冲突，与vue中的scoped不同，react用styled-components的给类名加了随机符的方式实现了css的私有化
+
+#### 好处
+
+* 性能好
+* 彻底解耦components与css文件，all in js
+* 更好的实现了React的组件化思想
+* 样式可以使用变量，继承，使用起来更加自由，灵活
