@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+## React Hooks
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 常用的五种钩子
 
-## Available Scripts
+#### useState()
 
-In the project directory, you can run:
+纯函数组件是没有状态的，useState就是为函数组件引入状态的
 
-### `npm start`
+#### useReducer()
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* useReducer, useState, redux都是用来管理状态的，区别是：
+  useState一次只能管理一个状态，且只能改变state的值，不能进行多个状态管理以及更复杂的业务逻辑，所以我们可以用useReducer代替useState,同时useReducer又比redux使用起来更加简介，更加轻量级
+* 使用步骤
+  * 定义初始状态initState
+  * 创建reducer
+  * 使用reducer
+* 使用场景
+  * 可用于提高应用的性能，当更新逻辑比较复杂的时，可以考虑使用useReducer
+  * 任何使用useState的地方都可以使用useReducer
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### useEffect()
 
-### `npm test`
+* useEffect是可以检测数据更新的，可以用来更好的处理副作用。
+* useEffect接收两个参数，一个参数就是你要进行的异步操作，第二个参数是一个数组，用来给出Effect的依赖项，只要数组发生改变，useEffect就会执行。
+* 当第二个参数省略不填的时候，useEffect会在每次组件渲染的时候执行，这一点类似componentDidMount.
+* useEffect回调是在dom渲染完毕之后执行，和vue中watch很像，但是执行的时机不同，watch是一开始就执行了
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### useContext()
 
-### `npm run build`
+* 用于在组件之间共享状态，而不必显示的通过组件树的逐层传递props
+* 使用步骤
+  * 使用createContext创建context对象
+  * 在顶层组件通过provider提供数据
+  * 在底层组件（子组件）通过useContext函数获取数据
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### useRef()
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* 用于在函数组件中获取真实的dom元素或者组件实例（因为函数组件没有实例，因此这里的获取组件实例是指获取类组件实例）
+* 使用步骤
+  * 导入useRef函数
+  * 执行useRef函数并且传入null,返回值为一个对象，内部由一个current属性存放拿到的dom对象(组件实例)
+  * 通过ref绑定要获取的元素或者组件实例
