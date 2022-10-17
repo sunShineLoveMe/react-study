@@ -1,12 +1,15 @@
-import {Routes, Route, Navigate} from 'react-router-dom'
-import Header from './style-components/header/Header'
-import Home from './pages/Home'
-import Help from './pages/Help'
-import About from './pages/About'
-import Login from './pages/Login'
+// import {Routes, Route, Navigate} from 'react-router-dom'
+import Container from './view-components/Container/Container'
+
+// import Header from './style-components/header/Header'
+// import Home from './pages/Home'
+// import Help from './pages/Help'
+// import About from './pages/About'
+// import Login from './pages/Login'
 
 export default function App() {
   return (
+    <Container />
     // <Routes>
     //   {/* path书写的是路径，element书写的是对应的组件 */}
     //   <Route path="/login" element = {<Login />}></Route>
@@ -25,6 +28,6 @@ export default function App() {
     //   */}
     //   <Route path="*" element={<Navigate to="/Header" />}></Route>
     // </Routes>
-    <Header />
+    // <Header />
   )
 }
