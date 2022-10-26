@@ -70,3 +70,19 @@ router应用也是单页面应用(SPA),因此也需要引入路由来控制不�
 * 彻底解耦components与css文件，all in js
 * 更好的实现了React的组件化思想
 * 样式可以使用变量，继承，使用起来更加自由，灵活
+
+## react结合echart
+
+### echart知识
+
+#### echart.init()
+
+创建一个echart实例，返回实例对象，不能在单个容器上初始化多个echarts实例，其中init的配置项中的renderer：渲染模式，支持canvas和svg两种模式
+
+#### echart.dispose()
+
+ 销毁实例，实例销毁之后无法再被使用
+
+#### echart.setOption()
+
+设置图表实例的配置项以及数据，万能接口，所有参数和数据的修改都可以通过setOption完成，Echart会合并新的参数和数据，然后刷新图表。如果开启动画的话，Echart找到两组数据之间的差异然后通过合适的动画去表现数据的变化。
