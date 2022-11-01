@@ -1,0 +1,52 @@
+.tablebox1 {
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.tbl-header2 {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    pointer-events: none;
+    thead{
+        background: red;
+    }
+}
+  
+.tbl-body2 {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.parent {
+    height: 350px;
+    display: block !important;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.parent::-webkit-scrollbar {
+    display: none;
+}
+/*设置的子盒子高度大于父盒子，产生溢出效果*/
+.child {
+    height: auto;
+    width: 100%;
+    // width: 300px !important;
+}
+
+.child tr {
+    height: 50px;
+    margin: 2px 0;
+    background: #009678;
+    width: 100%;
+}
+table td,
+table th {
+    padding: 4px !important;
+    text-align: center;
+}
