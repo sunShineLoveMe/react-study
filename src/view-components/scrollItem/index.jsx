@@ -15,7 +15,7 @@ export default function useScrollItem() {
     );
     return (
         <Popover placement="right" title={text} content={content} trigger="hover">
-            <span style={{ color:"#000",fontSize: "12px" }}>江苏御江环保有限公司1</span>
+            <span style={{ color:"#000",fontSize: "12px" }}>江苏御江</span>
         </Popover>
     )
 }

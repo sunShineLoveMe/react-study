@@ -1,5 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Button, Popover } from 'antd';
+
 import './table.less';
+
+import { PopOverTitle, PopOverContent } from './style'
+
+// import ScrollItem from '../scrollItem/index'
 
 export default function useTestScroll() {
     const [list] = useState([
@@ -23,6 +29,57 @@ export default function useTestScroll() {
     const childDom1 = useRef();
     const childDom2 = useRef();
     const childDom3 = useRef();
+
+    // const text = <div>
+    //                 <span style={{ color: 'red' }}>Title1</span>;
+    //                 <span style={{ color: 'red' }}>Title2</span>;
+    //             </div>
+
+    const text = <PopOverTitle>
+                        <span className='pop-over-title-item'>废物代码</span>
+                        <span className='pop-over-title-item'>废物名称</span>
+                        <span className='pop-over-title-item'>设备规格</span>
+                        <span className='pop-over-title-item'>满载率</span>
+                        <span className='pop-over-title-item'>状态</span>
+                </PopOverTitle>
+
+    const content = (
+        <PopOverContent>
+            <div className='pop-over-content-row'>
+                <span className='pop-over-content-item' style={{width: '30%'}}>091-121-11</span>
+                <span className='pop-over-content-item' style={{width: '30%'}}>废物代码11</span>
+                <span className='pop-over-content-item' style={{width: '10%'}}>20L</span>
+                <span className='pop-over-content-item' style={{width: '10%'}}>98%</span>
+                <span className='pop-over-content-item' style={{width: '15%'}}>正常</span>
+            </div>
+            <div className='pop-over-content-row'>
+                <span className='pop-over-content-item' style={{width: '30%'}}>091-121-11</span>
+                <span className='pop-over-content-item' style={{width: '30%'}}>废物代码11</span>
+                <span className='pop-over-content-item' style={{width: '10%'}}>20L</span>
+                <span className='pop-over-content-item' style={{width: '10%'}}>98%</span>
+                <span className='pop-over-content-item' style={{width: '15%'}}>正常</span>
+            </div>
+            <div className='pop-over-content-row'>
+                <span className='pop-over-content-item' style={{width: '30%'}}>091-121-11</span>
+                <span className='pop-over-content-item' style={{width: '30%'}}>废物代码11</span>
+                <span className='pop-over-content-item' style={{width: '10%'}}>20L</span>
+                <span className='pop-over-content-item' style={{width: '10%'}}>98%</span>
+                <span className='pop-over-content-item' style={{width: '15%'}}>正常</span>
+            </div>
+            <div className='pop-over-content-row'>
+                <span className='pop-over-content-item' style={{width: '30%'}}>091-121-11</span>
+                <span className='pop-over-content-item' style={{width: '30%'}}>废物代码11</span>
+                <span className='pop-over-content-item' style={{width: '10%'}}>20L</span>
+                <span className='pop-over-content-item' style={{width: '10%'}}>98%</span>
+                <span className='pop-over-content-item' style={{width: '15%'}}>正常</span>
+            </div>
+           
+        </PopOverContent>
+    );
+
+    const overStyle = {
+        padding: "20px"
+    }
     // 开始滚动
     useEffect(() => {
         // 多拷贝一层，让它无缝滚动
@@ -47,7 +104,7 @@ export default function useTestScroll() {
 
     return (
         <div className='tablebox1'>
-            <div className='tbl-header2'> 
+            <div className='tbl-header2'>
                 <table>
                     <thead>
                         <tr>
@@ -58,12 +115,12 @@ export default function useTestScroll() {
                             <th>环比(%)</th>
                         </tr>
                     </thead>
-                    <tbody ref={childDom3} style={{opacity:0}}></tbody>
+                    <tbody ref={childDom3} style={{ opacity: 0 }}></tbody>
                 </table>
             </div>
             <div className='tbl-body2'>
                 <table className='parent' ref={warper}>
-                    <thead style={{opacity:0,background:'red'}}>
+                    <thead style={{ opacity: 0, background: 'red' }}>
                         <tr>
                             <th>排名</th>
                             <th>地市</th>
@@ -73,22 +130,25 @@ export default function useTestScroll() {
                         </tr>
                     </thead>
                     <tbody className='child' ref={childDom1}
-                        onMouseOver={() => {
+                        onMouseOver={(e) => {
+                            console.log(e)
                             return hoverHandler(false)
                         }}
                         onMouseLeave={() => hoverHandler(true)}
                     >
                         {list.map((item) => (
-                            <tr
-                                key={item.billNo}
-                                
-                            >
-                                <td>{item.billNo}</td>
-                                <td>{item.city}</td>
-                                <td>{item.saleIncome}</td>
-                                <td>{item.an}</td>
-                                <td>{item.Mon}</td>
-                            </tr>
+                            <Popover key={item.billNo} placement="right" color="#121626" overlayClassName="pop-over-container" title={text} content={content} trigger="hover">
+                                <tr
+                                    key={item.billNo}
+
+                                >
+                                    <td>{item.billNo}</td>
+                                    <td>{item.city}</td>
+                                    <td>{item.saleIncome}</td>
+                                    <td>{item.an}</td>
+                                    <td>{item.Mon}</td>
+                                </tr>
+                            </Popover>
                         ))}
                     </tbody>
                     <tbody className='child' ref={childDom2}></tbody>
