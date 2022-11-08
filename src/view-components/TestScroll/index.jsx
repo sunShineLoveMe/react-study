@@ -23,6 +23,8 @@ export default function useTestScroll() {
     ]);
     const [isScrolle, setIsScrolle] = useState(true);
 
+    const [count, setCount] = useState(0)
+ 
     // 滚动速度，值越小，滚动越快
     const speed = 30;
     const warper = useRef();
@@ -73,13 +75,9 @@ export default function useTestScroll() {
                 <span className='pop-over-content-item' style={{width: '10%'}}>98%</span>
                 <span className='pop-over-content-item' style={{width: '15%'}}>正常</span>
             </div>
-           
+        
         </PopOverContent>
     );
-
-    const overStyle = {
-        padding: "20px"
-    }
     // 开始滚动
     useEffect(() => {
         // 多拷贝一层，让它无缝滚动
@@ -89,16 +87,23 @@ export default function useTestScroll() {
         if (isScrolle) {
             timer = setInterval(
                 () =>
-                    warper.current.scrollTop >= childDom1.current.scrollHeight
+                    {
+                        console.log(`计数count: ${count}`)
+                        console.log(`isScrolle: ${isScrolle}`)
+                        console.log(`warper.current.scrollTop: ${warper.current.scrollTop}`)
+                        console.log(`childDom1.current.scrollHeight: ${childDom1.current.scrollHeight}`)
+                        warper.current.scrollTop >= childDom1.current.scrollHeight
                         ? (warper.current.scrollTop = 0)
-                        : warper.current.scrollTop++,
+                        : warper.current.scrollTop++
+                        setCount(count +1)
+                    },
                 speed
             );
         }
         return () => {
             clearTimeout(timer);
         };
-    }, [isScrolle]);
+    }, [isScrolle, count]);
 
     const hoverHandler = (flag) => setIsScrolle(flag);
 
@@ -131,7 +136,6 @@ export default function useTestScroll() {
                     </thead>
                     <tbody className='child' ref={childDom1}
                         onMouseOver={(e) => {
-                            console.log(e)
                             return hoverHandler(false)
                         }}
                         onMouseLeave={() => hoverHandler(true)}
