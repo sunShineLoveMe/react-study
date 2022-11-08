@@ -10,9 +10,11 @@ import ScrollItem from '../scrollItem/index'
 import TimerDemo from '../TimerDemo'
 import Page from '../Page'
 import { useState } from 'react'
+import OverlayTrigger from '../overlayTrigger/index'
 
 import ScrollList from '../scrollList/index'
 import TestScroll from '../TestScroll/index'
+import Tooltips from '../Tooltips'
 
 export default function Container() {
 
@@ -59,7 +61,9 @@ export default function Container() {
           {/* <ScrollList column={columns} data={dataSource}></ScrollList>
            */}
 
-           <TestScroll></TestScroll>
+           {/* <TestScroll></TestScroll> */}
+           {/* <Tooltips></Tooltips> */}
+           <OverlayTrigger></OverlayTrigger>
         </div>
     </MainContainer>
   )

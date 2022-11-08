@@ -8,8 +8,8 @@ export const MainContainer = styled.div`
         justify-content: center;
         width: 100%;
         height: 200px;
-        background: #666666;
-        border: 1px solid red;
+        /* background: #666666; */
+        /* border: 1px solid red; */
         padding: auto;
         position: relative;
     }
