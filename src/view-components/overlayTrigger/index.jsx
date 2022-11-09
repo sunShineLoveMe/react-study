@@ -1,7 +1,7 @@
 import React from 'react'
 import OverlayTrigger from 'react-overlay-trigger'
 
-const Overlay = ({style, ...rest}) => <span {...rest}>{children}</span>
+const Overlay = ({style, ...rest}) => <span {...rest}>{}</span>
 
 const overlay = <Overlay>yep</Overlay>
 

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import ReactTooltip from 'react-tooltip'
 import { MainContainer, HideScrollBar } from './style'
 
 // import Header from '../Header/Header'
@@ -18,23 +19,6 @@ import Tooltips from '../Tooltips'
 
 export default function Container() {
 
-  const [show, setShow] = useState(true)
-
-  const columns = [
-    {
-      title: 'Name',
-      dataIndex: '未处理',
-    },
-    {
-      title: 'Age',
-      dataIndex: '已处理',
-    },
-    {
-      title: 'Address',
-      dataIndex: '',
-    }
-  ];
-
   const dataSource = [];
 
   for (let i = 0; i < 12; i++) {
@@ -45,6 +29,10 @@ export default function Container() {
       address: `London, Park Lane no. ${i}`,
     });
   }
+
+  // useEffect(() => {
+  //     ReactTooltip.rebuild()
+  // })
 
   return (
     <MainContainer>
@@ -62,8 +50,9 @@ export default function Container() {
            */}
 
            {/* <TestScroll></TestScroll> */}
-           {/* <Tooltips></Tooltips> */}
-           <OverlayTrigger></OverlayTrigger>
+           {/* <ReactTooltip id="foo" /> */}
+           <Tooltips/>
+           {/* <OverlayTrigger></OverlayTrigger> */}
         </div>
     </MainContainer>
   )
