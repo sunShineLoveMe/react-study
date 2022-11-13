@@ -1,0 +1,22 @@
+.popover-body::-webkit-scrollbar {
+    display: none;
+}
+
+.popover {
+    height: 150px;
+    width: 400px;
+    background-color: rgba(0, 0, 0, 0.86) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.popover-body {
+    text-align: center;
+    height: 120px;
+    width: 100%;
+    overflow-y: scroll;
+}

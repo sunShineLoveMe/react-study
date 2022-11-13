@@ -8,7 +8,7 @@ export const MainContainer = styled.div`
         justify-content: center;
         width: 100%;
         height: 200px;
-        /* background: #666666; */
+        /* background: #000 */
         /* border: 1px solid red; */
         padding: auto;
         position: relative;

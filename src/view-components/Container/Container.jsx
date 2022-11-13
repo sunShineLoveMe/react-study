@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import ReactTooltip from 'react-tooltip'
 import { MainContainer, HideScrollBar } from './style'
+import BootstrapExample from '../bootstrapExample'
+import { getGroupTransferQuantitySummaryByRegisterRegion } from '../../api/collect/index'
 
 // import Header from '../Header/Header'
 // import EchartMap from '../Map/EchartMap'
@@ -16,6 +18,7 @@ import OverlayTrigger from '../overlayTrigger/index'
 import ScrollList from '../scrollList/index'
 import TestScroll from '../TestScroll/index'
 import Tooltips from '../Tooltips'
+import ScrollTipItem from '../scrollTipItem'
 
 export default function Container() {
 
@@ -30,13 +33,29 @@ export default function Container() {
     });
   }
 
+  const [count, setCount] = useState()
+
+  const [show, setShow] = useState(false)
+
+  const handleScrollItem = () => {
+    getGroupTransferQuantitySummaryByRegisterRegion().then(res => {
+      console.log(res);
+      if(res.success) {
+        setShow(true)
+        setCount(res.obj.length)
+      }
+    })
+  }
+
   // useEffect(() => {
   //     ReactTooltip.rebuild()
   // })
 
   return (
     <MainContainer>
-        <div className='main_box' style={{width: '300px'}}>
+        <div className='main_box' 
+          style={{width: '300px', border: '1px solid red', cursor: "pointer" }}>
+            <BootstrapExample></BootstrapExample>
           {/* <HideScrollBar></HideScrollBar> */}
           {/* <ScrollTable columns={columns} dataSource={dataSource} scroll={{ y: 300 }} /> */}
 
@@ -51,7 +70,12 @@ export default function Container() {
 
            {/* <TestScroll></TestScroll> */}
            {/* <ReactTooltip id="foo" /> */}
-           <Tooltips/>
+           {/* <Tooltips/> */}
+           {/* 点击
+           { show ? <ScrollTipItem count = {count} /> : null } */}
+
+
+           
            {/* <OverlayTrigger></OverlayTrigger> */}
         </div>
     </MainContainer>

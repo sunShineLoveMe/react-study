@@ -7,35 +7,32 @@ import AsyncFetch from '../asyncFetch'
 import { TooltipBg } from './style'
 
 
-export default function useTooltips() {
+export default function useTooltips(props) {
 
+    let { testCount } = props
+
+    const [toolCount, setToolCount] = useState(0)
     const [title, setTitle] = useState("测试提示框")
-    // const [isClick, setIsClick] = useState(false)
-    // const [content, setContent] = useState("测试提示框内容")
     const [showContent, setShowContent] = useState("<div>你是人</div>")
 
     const fetGetGroupTransferQuantitySummaryByRegisterRegion = () => {
         console.log(".....")
         getGroupTransferQuantitySummaryByRegisterRegion(res => {
             if (res.success) {
-                console.log("进入异步方法。。。。")
                 setShowContent(`<div>我是在父组件异步的数据....</div>`)
             }
         })
     }
 
-    const handleClick = () => {
-        console.log("点击触发。。。。");
-    }
-
     useEffect(() => {
+        setToolCount(testCount)
         ReactTooltip.rebuild()
     })
 
     return (
         <TooltipBg>
             <div className="example-jsx">
-                <div className="block">
+                {/* <div className="block">
                     <a data-for="soclose" data-tip="1">
                         1 (❂‿❂)
                     </a>
@@ -69,9 +66,9 @@ export default function useTooltips() {
                     <a data-for="soclose" data-tip="7">
                         7 (❂‿❂)
                     </a>
-                </div>
-                <div data-for="soclose" data-event="click" data-tip="8" className="block" >
-                    <div onClick={handleClick}>
+                </div> */}
+                <div className="block">
+                    <div data-for="soclose" data-event="click" data-tip="8">
                         8 (❂‿❂)
                     </div>
                 </div>
@@ -81,7 +78,7 @@ export default function useTooltips() {
                     getContent={(dataTip) => (
                         <div>
                             <h3>This little buddy is {dataTip}</h3>
-                            <p>{}</p>
+                            <p>{toolCount}</p>
                         </div>
                         // <AsyncFetch/>
                     )}
