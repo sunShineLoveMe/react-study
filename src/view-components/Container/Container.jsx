@@ -19,6 +19,7 @@ import ScrollList from '../scrollList/index'
 import TestScroll from '../TestScroll/index'
 import Tooltips from '../Tooltips'
 import ScrollTipItem from '../scrollTipItem'
+import FatherCount from '../fatherCount'
 
 export default function Container() {
 
@@ -55,7 +56,8 @@ export default function Container() {
     <MainContainer>
         <div className='main_box' 
           style={{width: '300px', border: '1px solid red', cursor: "pointer" }}>
-            <BootstrapExample></BootstrapExample>
+            <FatherCount></FatherCount>
+            {/* <BootstrapExample></BootstrapExample> */}
           {/* <HideScrollBar></HideScrollBar> */}
           {/* <ScrollTable columns={columns} dataSource={dataSource} scroll={{ y: 300 }} /> */}
 
